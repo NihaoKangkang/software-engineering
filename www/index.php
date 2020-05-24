@@ -3,7 +3,8 @@
 <body>
 
 <?php
-echo "Hello World!";
+echo "Hello World!<br/>";
+echo '我们是不是应该先学个7天学会php？'
 ?>
 
 </body>
