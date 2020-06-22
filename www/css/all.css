@@ -1,0 +1,125 @@
+.bg {
+    background-image: url('../img/index.jpg'); /*相对于css文件的路径*/
+    position:fixed; /* static默认 不会受到top， bottom， left， right影响 relative 相对定位 fixed 固定定位不会随网页移动而移动 absolute 绝对定位*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 1000px; /*宽度在1000px以内时 图片不缩放*/
+    
+    z-index: -10; /*放在最下层*/
+    zoom: 1; /*zoom是CSS hack中专对IE6起作用的部分。IE6浏览器会执行zoom:1表示对象的缩放比例。兼容IE6、IE7、IE8浏览器，经常会遇到一些问题，可以使用zoom:1来解决，zoom有如下作用：1.触发IE浏览器的haslayout； 2.解决ie下的浮动，margin重叠等一些问题。*/
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-size: cover;
+    -webkit-background-size: cover; /*提供chrome opera支持*/
+    -o-background-size: cover;
+    background-position: center 0;
+}
+.shurukuang {
+    width: 400px;
+    height: 560px;
+    margin-left: 65%;
+    margin-top: 10%;
+    /*background-color: rgba(84, 219, 219, 0.336);*/
+    font-size: x-large;
+}
+.shurukuang h1{
+    font-size: 46px;
+}
+.shurukuang input {
+    font-size: 36px;
+}
+.shenming {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(84, 219, 219, 0.336);
+    position: fixed;
+    bottom:0%;
+    left: 0px;
+    z-index: -1;
+    color : grey;
+    
+    
+    text-align: center;
+}
+.bgp {
+    background-image: url('../img/1.jpg'); /*相对于css文件的路径*/
+    position:fixed; /* static默认 不会受到top， bottom， left， right影响 relative 相对定位 fixed 固定定位不会随网页移动而移动 absolute 绝对定位*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 1000px; /*宽度在1000px以内时 图片不缩放*/
+    
+    z-index: -10; /*放在最下层*/
+    zoom: 1; /*zoom是CSS hack中专对IE6起作用的部分。IE6浏览器会执行zoom:1表示对象的缩放比例。兼容IE6、IE7、IE8浏览器，经常会遇到一些问题，可以使用zoom:1来解决，zoom有如下作用：1.触发IE浏览器的haslayout； 2.解决ie下的浮动，margin重叠等一些问题。*/
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-size: cover;
+    -webkit-background-size: cover; /*提供chrome opera支持*/
+    -o-background-size: cover;
+    background-position: center 0;
+}
+.bgp .标题 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.993);
+    font-size: 72px;
+}
+.bgp p{
+    text-align: center;
+    margin-top: -36px;
+}
+.out {
+    width: 960px;
+    height: 500px;
+ /*   background-color: rgba(40, 42, 165, 0.603);*/
+    margin-top: 10%;
+    margin-left: 25%;
+    text-align: center;
+}
+.out .trshuang {
+    background-color: rgba(235, 11, 205, 0.295);
+}
+.out .trdan{
+    background-color: rgba(11, 164, 235, 0);
+}
+table {
+    border:1px solid black;
+    border-collapse: collapse;
+}
+table th{
+    background-color: rgba(40, 42, 165, 0.603);
+}
+table td,th{
+    border: 1px solid black;
+    height: 80px;
+}
+.out table {
+    width:100%;
+    border: '1';
+    margin: 0 auto;
+}
+.forFix {
+    margin-top: 0%;
+    margin-left: 0%;
+    text-align: center;
+}
+.mylink:link {
+    color: grey;
+    text-decoration: none;
+}
+/* 访问过后a标签的颜色 */
+.mylink:visited {
+    color: black;
+}
+/* 悬停时a标签的颜色 */
+.mylink:hover {
+    color: pink;
+    text-decoration: underline;
+    background-color: black;
+}
+/* 点击时a标签的颜色 */
+.mylink:active {
+    color: red;
+}
