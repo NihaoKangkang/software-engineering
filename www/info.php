@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if(empty($_SESSION))
+    {
+        header('Location: ./index.php'); // 登出  
+      
+        exit(0);
+    }
     if(isset($_SESSION['expiretime'])) {  
   
         if($_SESSION['expiretime'] < time()) {  
@@ -15,6 +21,9 @@
             $_SESSION['expiretime'] = time() + 600; // 刷新时间戳  
       
         }   
+    }else{
+        header('Location: ./index.php'); // 登出  
+        exit(0);  
     }
 ?>
 

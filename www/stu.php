@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if(empty($_SESSION))
+    {
+        header('Location: ./index.php'); // 登出  
+      
+        exit(0);
+    }
     if(isset($_SESSION['expiretime'])) {  
   
         if($_SESSION['expiretime'] < time()) {  
@@ -15,6 +21,9 @@
             $_SESSION['expiretime'] = time() + 600; // 刷新时间戳  
       
         }   
+    }else{
+        header('Location: ./index.php'); // 登出  
+        exit(0);  
     }
 ?>
 
@@ -57,14 +66,22 @@
                     //如果get['car_ID']参数中有值 那么添加到book表
                     if(!empty($_GET['car_ID']))
                     {
-                        $query_book = 'insert into book(car_ID, stu_ID, begin_time) values("'.$_GET['car_ID'].'","'.$_SESSION['id'].'","'.$_GET['begin_time'].'")';
-                        mysqli_query($sql, $query_book);
+                        $query_before = 'select count(*) as c book where car_ID="'.$_GET['car_ID'].'" and stu_ID = "'.$_SESSION['id'].'" and begin_time="'.$_GET['begin_time'].'";';
+                        if(!mysqli_fetch_assoc(mysqli_query($sql,$query))['c'])
+                        {
+                            $query_book = 'insert into book(car_ID, stu_ID, begin_time) values("'.$_GET['car_ID'].'","'.$_SESSION['id'].'","'.$_GET['begin_time'].'")';
+                            mysqli_query($sql, $query_book);
+                        }
                     }
                     //如果传入的是取消预定参数
                     if(!empty($_GET['car_ID_cancel']))
                     {
-                        $query_book = 'delete from book where stu_ID="'.$_SESSION['id'].'" and car_ID = "'.$_GET['car_ID_cancel'].'" and begin_time = "'.$_GET['begin_time'].'"';
-                        mysqli_query($sql, $query_book);
+                        $query_before = 'select count(*) as c book where car_ID="'.$_GET['car_ID_cancel'].'" and stu_ID = "'.$_SESSION['id'].'" and begin_time="'.$_GET['begin_time'].'";';
+                        if(mysqli_fetch_assoc(mysqli_query($sql,$query))['c'])
+                        {
+                            $query_book = 'delete from book where stu_ID="'.$_SESSION['id'].'" and car_ID = "'.$_GET['car_ID_cancel'].'" and begin_time = "'.$_GET['begin_time'].'"';
+                            mysqli_query($sql, $query_book);
+                        }
                     }
                     $count = 0;
                     while($result = mysqli_fetch_assoc($answer))
