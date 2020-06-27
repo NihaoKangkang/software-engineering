@@ -1,3 +1,7 @@
+create database lzu;
+
+use lzu;
+
 create table admin(
 	adm_ID char(6) not null,
 	adm_pass varchar(32)
