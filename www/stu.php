@@ -67,10 +67,15 @@
                     if(!empty($_GET['car_ID']))
                     {
                         $query_temp = 'select count(*) as count from book where stu_ID = "'.$_SESSION['id'].'" and car_ID = "'.$_GET['car_ID'].'" and begin_time = "'.$_GET['begin_time'].'"';
-                        $answer_temp = mysqli_query($sql, $temp);
+                        $answer_temp = mysqli_query($sql, $query_temp);
                         $result_temp = mysqli_fetch_assoc($answer_temp)['count'];
                         if(!$result_temp)
                         {
+                            if(strlen($_SESSION['id']) != 12)
+                            {
+                                header("refresh:3;url=./index.php");
+                                exit('账号异常，禁止越权访问');
+                            }
                             $query_book = 'insert into book(car_ID, stu_ID, begin_time) values("'.$_GET['car_ID'].'","'.$_SESSION['id'].'","'.$_GET['begin_time'].'")';
                             mysqli_query($sql, $query_book);
                         }
@@ -79,7 +84,7 @@
                     if(!empty($_GET['car_ID_cancel']))
                     {
                         $query_temp = 'select count(*) as count from book where stu_ID = "'.$_SESSION['id'].'" and car_ID = "'.$_GET['car_ID_cancel'].'" and begin_time = "'.$_GET['begin_time'].'"';
-                        $answer_temp = mysqli_query($sql, $temp);
+                        $answer_temp = mysqli_query($sql, $query_temp);
                         $result_temp = mysqli_fetch_assoc($answer_temp)['count'];
                         if($result_temp)
                         {
